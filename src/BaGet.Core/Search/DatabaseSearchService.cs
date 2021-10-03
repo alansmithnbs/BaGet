@@ -70,7 +70,7 @@ namespace BaGet.Core
 
             var results = await search.ToListAsync(cancellationToken);
             var groupedResults = results
-                .GroupBy(p => p.Id)
+                .GroupBy(p => p.Id, StringComparer.OrdinalIgnoreCase)
                 .Select(group => new PackageRegistration(group.Key, group.ToList()))
                 .ToList();
 
