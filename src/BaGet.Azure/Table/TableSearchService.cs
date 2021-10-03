@@ -21,7 +21,7 @@ namespace BaGet.Azure
             Task.FromResult(new DependentsResponse
             {
                 TotalHits = 0,
-                Data = new List<DependentResult>()
+                Data = new List<PackageDependent>()
             });
 
         private readonly CloudTable _table;

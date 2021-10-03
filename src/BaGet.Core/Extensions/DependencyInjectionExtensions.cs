@@ -74,6 +74,8 @@ namespace BaGet.Core
             services.TryAddSingleton<IFrameworkCompatibilityService, FrameworkCompatibilityService>();
             services.TryAddSingleton<IPackageDownloadsSource, PackageDownloadsJsonSource>();
 
+            services.TryAddSingleton<ISearchResponseBuilder, SearchResponseBuilder>();
+            services.TryAddSingleton<IV2Builder, V2Builder>();
             services.TryAddSingleton<NuGetClient>();
             services.TryAddSingleton<NullSearchIndexer>();
             services.TryAddSingleton<NullSearchService>();
@@ -108,7 +110,6 @@ namespace BaGet.Core
             services.TryAddTransient(IMirrorServiceFactory);
             services.TryAddTransient(IMirrorClientFactory);
 
-            services.TryAddTransient<IV2Builder, V2Builder>();
         }
 
         private static void AddDefaultProviders(this IServiceCollection services)
