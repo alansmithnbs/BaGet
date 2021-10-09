@@ -87,7 +87,7 @@ namespace BaGet
 
             app.UseForwardedHeaders();
             
-            string basePath = Environment.GetEnvironmentVariable("ASPNETCORE_BASEPATH");
+            var basePath = Environment.GetEnvironmentVariable("ASPNETCORE_BASEPATH");
             if (!string.IsNullOrEmpty(basePath))
             {
                 app.Use(async (context, next) =>
