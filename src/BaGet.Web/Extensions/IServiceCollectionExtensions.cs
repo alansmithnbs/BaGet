@@ -22,6 +22,11 @@ namespace BaGet
                     options.JsonSerializerOptions.IgnoreNullValues = true;
                 });
 
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedHost;
+            });
+
             services.AddRazorPages();
 
             services.AddHttpContextAccessor();

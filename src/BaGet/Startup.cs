@@ -86,7 +86,17 @@ namespace BaGet
             }
 
             app.UseForwardedHeaders();
-            app.UsePathBase(options.PathBase);
+            
+            string basePath = Environment.GetEnvironmentVariable("ASPNETCORE_BASEPATH");
+            if (!string.IsNullOrEmpty(basePath))
+            {
+                app.Use(async (context, next) =>
+                {
+                    context.Request.PathBase = basePath;
+                    await next.Invoke();
+                });
+                app.UsePathBase(options.PathBase);
+            }
 
             app.UseStaticFiles();
             app.UseRouting();
