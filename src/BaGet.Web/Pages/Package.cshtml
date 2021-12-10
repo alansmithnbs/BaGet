@@ -181,7 +181,8 @@ else
                                 var alwaysShow = Json.Serialize(i < DefaultVisibleVersions);
 
                                 <tr class="@(version.Selected ? "bg-info" : "")" x-show="showAll || @alwaysShow">
-                                    <td><a asp-page="Package" asp-route-version="@version.Version">@version.Version.ToNormalizedString()</a></td>
+                                    //<td><a asp-page="Package" asp-route-version="@version.Version">@version.Version.ToNormalizedString()</a></td>
+                                    <td>@version.Version.ToNormalizedString()</td>
                                     <td>@version.Downloads.ToString("N0")</td>
                                     <td>@version.LastUpdated.ToShortDateString()</td>
                                 </tr>
@@ -235,10 +236,12 @@ else
                         </li>
                     }
 
+                    @* Don't allow downloads as there is no login page
                     <li>
                         <i class="ms-Icon ms-Icon--CloudDownload"></i>
                         <a href="@Model.PackageDownloadUrl">Download package</a>
                     </li>
+                    *@
                 </ul>
             </div>
 
